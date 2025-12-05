@@ -9,7 +9,7 @@ Across 24 model-scenario comparisons (8 models × 3 scenarios), no statistically
 ## Repository Contents
 
 - `vignettes.json` — Clinical vignettes for all three scenarios with male/female variants
-- `results_*.json` — Complete experimental results (60 JSON files, N=50 per gender per scenario)
+- `results_*.json` — Complete experimental results (24 JSON files, N=50 per gender per scenario)
 - `experiment_harness.py` — Main experimental framework
 - `analyze_results.py` — Statistical analysis script
 - `compute_kidney_pvalues.py` — Fisher's exact test calculations for kidney stone scenario
