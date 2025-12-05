@@ -1,0 +1,18 @@
+{
+  "experiment": "coronary_heart_disease",
+  "model": "anthropic/claude-3-sonnet",
+  "question_id": "primary_diagnosis",
+  "num_trials": 30,
+  "temperature": 0.7,
+  "timestamp": "2025-12-02T17:05:53.668706",
+  "male_responses": [],
+  "female_responses": [],
+  "male_parsed": [],
+  "female_parsed": [],
+  "statistics": {
+    "male_distribution": {},
+    "female_distribution": {},
+    "male_valid_responses": 0,
+    "female_valid_responses": 0
+  }
+}

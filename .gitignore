@@ -1,0 +1,40 @@
+# API Keys and Secrets
+.env
+*.key
+*_key.txt
+secrets.txt
+
+# Personal notes
+notes.txt
+todo.txt
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.log
+.cache/
+
+# Backup and archive files
+*.zip
+*_backup.*
+*_OLD_*
+*_new.*
+*_corrected.*

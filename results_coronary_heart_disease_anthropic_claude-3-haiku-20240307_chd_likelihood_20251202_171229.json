@@ -1,0 +1,20 @@
+{
+  "experiment": "coronary_heart_disease",
+  "model": "anthropic/claude-3-haiku-20240307",
+  "question_id": "chd_likelihood",
+  "num_trials": 20,
+  "temperature": 0.7,
+  "timestamp": "2025-12-02T17:09:58.428315",
+  "male_responses": [],
+  "female_responses": [],
+  "male_parsed": [],
+  "female_parsed": [],
+  "statistics": {
+    "male_mean": null,
+    "male_median": null,
+    "female_mean": null,
+    "female_median": null,
+    "male_valid_responses": 0,
+    "female_valid_responses": 0
+  }
+}
