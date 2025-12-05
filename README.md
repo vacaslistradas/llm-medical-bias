@@ -1,34 +1,58 @@
-# Non-Monotonic Gender Bias in Medical LLMs (Vignette Study)
+# LLM Medical Gender Bias Study
 
-This repo contains the materials for a small vignette study (n=30 per gender per model; two clinical scenarios) examining gender differences in pain-management recommendations across eight LLM releases (Dec 2024 runs). It is intended as a transparent supplement to the class paper and a starting point for replication/extension.
+This repository contains experimental data and analysis scripts for a gender bias study examining clinical vignette responses across eight state-of-the-art large language models (December 2025). The study tests for gender-based differences in three clinical scenarios where documented physician gender bias exists.
 
-## Contents
-- `data/` — vignettes, prompts, and parsing/mapping rules.
-- `results/` — raw model outputs (as collected), parsed CSVs, and API call logs (timestamps/models/temps) when available.
-- `analysis/` — scripts/notebooks for parsing and stats.
-- `config/` — run configuration (models, dates, temperatures, trials).
-- `paper/` — paper sources (condensed LaTeX/PDF if included).
+## Key Findings
 
-## Models and runs
-- Models: GPT-3.5 Turbo (Nov 2022), GPT-4 Turbo (Apr 2023), GPT-4o (May 2024), GPT-5.1 (Aug 2024), Claude 3 Opus (Mar 2024), Claude 3.5 Sonnet (Jun 2024), Claude Sonnet 4 (Oct 2024), Claude Sonnet 4.5 (Nov 2024).
-- Provider: OpenRouter API.
-- Dates: 2024-12-02 to 2024-12-04 (single 3-day window).
-- Temperature: 0.7; no seed specified.
-- Trials: 30 prompts per gender per model per vignette (60/model/condition).
-- API version strings were not captured; time stamps are in `results/logs/` if available.
+Across 24 model-scenario comparisons (8 models × 3 scenarios), no statistically significant gender-based differences were detected in the hypothesized direction (all p > 0.05). However, the sample size (N=50 per gender) provides 80% power to detect only large effects (≥28 percentage points or Cohen's d≥0.57), while physician-level biases documented in the literature are typically 9-10 percentage points—well below the detection threshold of this study.
 
-## Reproduction outline
-1) Use the exact prompts in `data/prompts.md` and vignettes in `data/vignettes.md`.
-2) Call the same models via OpenRouter (or the closest current versions), with temp 0.7.
-3) Save raw outputs (JSON/CSV) under `results/raw/` with timestamps; log model name, date, temp, and prompt version in `results/logs/`.
-4) Parse with the mapping rules in `data/mapping_rules.md` (scripts in `analysis/scripts/` if provided).
-5) Run stats (chi-square/t-tests or exact tests) as in the notebooks/scripts; report counts, p-values, and confidence intervals.
+## Repository Contents
 
-## Notes and limitations
-- Two vignettes only (kidney stone analgesia, back pain psych attribution); gender variation via name/pronouns only.
-- No prompt variants, temperature sweeps, or repeat-day robustness runs beyond the single window.
-- No refusals were observed; ambiguous responses were manually coded per `data/mapping_rules.md`.
-- Chi-square assumptions may be weak with small cells; exact tests are preferable for replication.
+- `vignettes.json` — Clinical vignettes for all three scenarios with male/female variants
+- `results_*.json` — Complete experimental results (60 JSON files, N=50 per gender per scenario)
+- `experiment_harness.py` — Main experimental framework
+- `analyze_results.py` — Statistical analysis script
+- `compute_kidney_pvalues.py` — Fisher's exact test calculations for kidney stone scenario
+- `get_exact_kidney_stats.py` — Detailed kidney stone treatment distribution analysis
+- `extract_kidney_stats.py` — Additional kidney stone data extraction
+- `requirements.txt` — Python dependencies
+- `.gitignore` — Version control exclusions
+
+## Experimental Design
+
+**Models tested** (via OpenRouter API):
+- GPT-3.5 Turbo, GPT-4 Turbo, GPT-4o, GPT-5.1
+- Claude 3 Opus, Claude 3.5 Sonnet, Claude Sonnet 4, Claude Sonnet 4.5
+
+**Clinical scenarios**:
+1. Kidney stone pain management (treatment recommendation)
+2. Chronic back pain (psychological factor attribution)
+3. Coronary heart disease (primary diagnosis)
+
+**Methodology**:
+- N=50 trials per gender per model per scenario
+- Total trials: 2,400 (8 models × 3 scenarios × 2 genders × 50 trials)
+- Temperature: 0.7
+- Gender variation: Patient names and pronouns only
+- Data collection: December 2-4, 2025
+- Statistical tests: Fisher's exact test (categorical outcomes), two-sample t-tests (continuous outcomes)
+
+## Reproduction
+
+1. Install dependencies: `pip install -r requirements.txt`
+2. Review vignettes: `vignettes.json`
+3. Run experiments: `python experiment_harness.py --api-key YOUR_KEY --experiment SCENARIO --model MODEL_NAME --question QUESTION_TYPE --trials 50`
+4. Analyze results: `python analyze_results.py` or model-specific scripts
+
+## Limitations
+
+- **Statistical power**: Study can only detect large effects (≥28pp), not physician-magnitude biases (9-10pp)
+- **Scenarios**: Three scenarios only; limited coverage of clinical contexts
+- **Gender variation**: Name/pronouns only; no other demographic variation
+- **Single time window**: December 2-4, 2025; no temporal robustness testing
+- **No randomization seeds**: API calls did not specify seeds
+- **Limited unparseable responses**: <5 responses out of 2,400 (<0.2%)
 
 ## License
-Specify your preferred license here (e.g., MIT for code, CC-BY 4.0 for text).
+
+MIT License - see code and data are available for reuse with attribution.
