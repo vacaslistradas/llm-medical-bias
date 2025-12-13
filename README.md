@@ -1,58 +1,64 @@
 # LLM Medical Gender Bias Study
 
-This repository contains experimental data and analysis scripts for a gender bias study examining clinical vignette responses across eight state-of-the-art large language models (December 2025). The study tests for gender-based differences in three clinical scenarios where documented physician gender bias exists.
+This repository contains experimental data and analysis scripts for a gender bias study examining clinical vignette responses across eight frontier large language models (December 2025). The study tests for gender-based differences in pain management scenarios where documented physician gender bias exists.
 
 ## Key Findings
 
-Across 24 model-scenario comparisons (8 models × 3 scenarios), no statistically significant gender-based differences were detected in the hypothesized direction (all p > 0.05). However, the sample size (N=50 per gender) provides 80% power to detect only large effects (≥28 percentage points or Cohen's d≥0.57), while physician-level biases documented in the literature are typically 9-10 percentage points—well below the detection threshold of this study.
+In kidney stone treatment, **4/8 models showed significant bias** favoring males for stronger analgesics:
+- GPT-4o: 14.8pp gap (exceeds documented human physician bias of 11pp)
+- GPT-3.5 Turbo: 10.1pp gap
+- Claude Sonnet 4.5: 6.9pp gap
+- GPT-4o-mini: 2.8pp gap
+
+Four models showed **no significant bias** across any task: GPT-5.1, Claude 3 Haiku, Claude 3.5 Sonnet, and Claude Sonnet 4—outperforming the human physician baseline.
+
+In back pain treatment (identical response options), **no models showed significant bias** (0/8). For psychological attribution, only GPT-3.5 Turbo showed the predicted bias.
 
 ## Repository Contents
 
-- `vignettes.json` — Clinical vignettes for all three scenarios with male/female variants
-- `results_*.json` — Complete experimental results (24 JSON files, N=50 per gender per scenario)
-- `experiment_harness.py` — Main experimental framework
+- `vignettes.json` — Clinical vignettes for two scenarios with male/female variants
+- `results_*.json` — Complete experimental results (N=800 per gender per model per task)
+- `experiment_harness.py` — Main experimental framework with parallel execution
 - `analyze_results.py` — Statistical analysis script
 - `compute_kidney_pvalues.py` — Fisher's exact test calculations for kidney stone scenario
 - `get_exact_kidney_stats.py` — Detailed kidney stone treatment distribution analysis
-- `extract_kidney_stats.py` — Additional kidney stone data extraction
 - `requirements.txt` — Python dependencies
-- `.gitignore` — Version control exclusions
 
 ## Experimental Design
 
 **Models tested** (via OpenRouter API):
-- GPT-3.5 Turbo, GPT-4 Turbo, GPT-4o, GPT-5.1
-- Claude 3 Opus, Claude 3.5 Sonnet, Claude Sonnet 4, Claude Sonnet 4.5
+- OpenAI: GPT-3.5 Turbo, GPT-4o, GPT-4o-mini, GPT-5.1
+- Anthropic: Claude 3 Haiku, Claude 3.5 Sonnet, Claude Sonnet 4, Claude Sonnet 4.5
 
-**Clinical scenarios**:
-1. Kidney stone pain management (treatment recommendation)
-2. Chronic back pain (psychological factor attribution)
-3. Coronary heart disease (primary diagnosis)
+**Clinical tasks**:
+1. Kidney stone pain management (treatment recommendation A-D)
+2. Back pain treatment (treatment recommendation A-D)
+3. Back pain psychological attribution (1-10 scale)
 
 **Methodology**:
-- N=50 trials per gender per model per scenario
-- Total trials: 2,400 (8 models × 3 scenarios × 2 genders × 50 trials)
+- N=800 trials per gender per model per task
+- Total API calls: 38,400 (8 models × 3 tasks × 2 genders × 800 trials)
 - Temperature: 0.7
 - Gender variation: Patient names and pronouns only
-- Data collection: December 2-4, 2025
-- Statistical tests: Fisher's exact test (categorical outcomes), two-sample t-tests (continuous outcomes)
+- Data collection: December 2025
+- Statistical tests: Chi-square/Fisher's exact (categorical), t-tests (continuous)
+- Statistical power: >99% to detect 5pp differences
 
 ## Reproduction
 
 1. Install dependencies: `pip install -r requirements.txt`
-2. Review vignettes: `vignettes.json`
-3. Run experiments: `python experiment_harness.py --api-key YOUR_KEY --experiment SCENARIO --model MODEL_NAME --question QUESTION_TYPE --trials 50`
-4. Analyze results: `python analyze_results.py` or model-specific scripts
+2. Set up API key: `export OPENROUTER_API_KEY=your_key`
+3. Run experiments: `python experiment_harness.py --experiment pain_management_kidney_stone --model openai/gpt-4o --question treatment --trials 800`
+4. Analyze results: `python analyze_results.py`
 
 ## Limitations
 
-- **Statistical power**: Study can only detect large effects (≥28pp), not physician-magnitude biases (9-10pp)
-- **Scenarios**: Three scenarios only; limited coverage of clinical contexts
-- **Gender variation**: Name/pronouns only; no other demographic variation
-- **Single time window**: December 2-4, 2025; no temporal robustness testing
-- **No randomization seeds**: API calls did not specify seeds
-- **Limited unparseable responses**: <5 responses out of 2,400 (<0.2%)
+- Two clinical scenarios only; results may not generalize to other domains
+- Binary gender markers; no testing of other gender identities
+- Gendered names may carry implicit signals beyond gender
+- Single time window (December 2025); model behavior may change
+- Structured response format may differ from free-form clinical conversations
 
 ## License
 
-MIT License - see code and data are available for reuse with attribution.
+MIT License - code and data are available for reuse with attribution.

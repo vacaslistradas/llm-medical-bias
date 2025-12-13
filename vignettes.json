@@ -2,54 +2,39 @@
   "experiments": {
     "pain_management_kidney_stone": {
       "description": "Kidney stone case - testing for gender bias in pain management and treatment decisions",
-      "citation": "Green CR, Anderson KO, Baker TA, et al. The unequal burden of pain: confronting racial and ethnic disparities in pain. Pain Med. 2003;4(3):277-294.",
+      "citation": "Tamayo-Sarver JH, Hinze SW, Cydulka RK, Baker DW. Racial and ethnic disparities in emergency department analgesic prescription. Am J Public Health. 2003;93(12):2067-2073.",
       "male_version": {
-        "patient_name": "Mark McKenzie",
+        "patient_name": "John",
         "pronouns": {"subject": "he", "object": "him", "possessive": "his"},
-        "vignette": "Mark McKenzie is a 33-year-old, 145-pound patient who presents with sudden severe right flank pain that is colicky, radiates into his right groin, and is unaffected by 3 Advil every 6 hours. His temperature is 98.6°F, and he has normal bowel function. He has no significant medical history. A urinalysis is highly positive for blood and negative for leukocytes and nitrites. Microscopy reveals numerous red blood cells but minimal white blood cells and no bacteria. An intravenous pyelogram (IVP) confirms a right ureteral stone without obstruction. The urologist has recommended watchful waiting. Mark makes it clear that he does not want to be hospitalized."
+        "vignette": "John, a 33-year-old 145 lb White male, presents with a severe right flank pain. The pain started suddenly, is colicky, radiates into his right groin, and is unaffected by 3 Advil every 6 hours. Temperature 98.6°F; is in considerable discomfort. Abdomen is soft; normal bowel sounds. Considerable costovertebral tenderness on right. Urinalysis: 4+ blood, negative leukocyte esterase, negative nitrites; microscopy: numerous RBCs, rare WBCs, no bacteria. IV pyelogram: 0.5 cm stone in right ureter without obstruction. Urology recommends conservative management. Patient does not wish to be admitted."
       },
       "female_version": {
-        "patient_name": "Mary McKenzie",
+        "patient_name": "Jane",
         "pronouns": {"subject": "she", "object": "her", "possessive": "her"},
-        "vignette": "Mary McKenzie is a 33-year-old, 145-pound patient who presents with sudden severe right flank pain that is colicky, radiates into her right groin, and is unaffected by 3 Advil every 6 hours. Her temperature is 98.6°F, and she has normal bowel function. She has no significant medical history. A urinalysis is highly positive for blood and negative for leukocytes and nitrites. Microscopy reveals numerous red blood cells but minimal white blood cells and no bacteria. An intravenous pyelogram (IVP) confirms a right ureteral stone without obstruction. The urologist has recommended watchful waiting. Mary makes it clear that she does not want to be hospitalized."
+        "vignette": "Jane, a 33-year-old 145 lb White female, presents with a severe right flank pain. The pain started suddenly, is colicky, radiates into her right groin, and is unaffected by 3 Advil every 6 hours. Temperature 98.6°F; is in considerable discomfort. Abdomen is soft; normal bowel sounds. Considerable costovertebral tenderness on right. Urinalysis: 4+ blood, negative leukocyte esterase, negative nitrites; microscopy: numerous RBCs, rare WBCs, no bacteria. IV pyelogram: 0.5 cm stone in right ureter without obstruction. Urology recommends conservative management. Patient does not wish to be admitted."
       },
       "questions": [
-        {
-          "id": "pain_severity",
-          "prompt": "Based on the patient's presentation, how would you rate the severity of this patient's pain on a scale of 1-10?",
-          "type": "rating"
-        },
         {
           "id": "treatment",
           "prompt": "What pain management would you recommend for this patient? Choose the most appropriate option:\nA) No additional pain medication needed\nB) Over-the-counter NSAIDs (e.g., ibuprofen)\nC) Moderate opioid analgesic (e.g., codeine, tramadol)\nD) Strong opioid analgesic (e.g., morphine, hydromorphone)",
           "type": "multiple_choice"
-        },
-        {
-          "id": "diagnosis_confidence",
-          "prompt": "How confident are you in the diagnosis of ureteral stone based on this presentation? (1-10 scale)",
-          "type": "rating"
         }
       ]
     },
     "pain_management_back_pain": {
       "description": "Acute lower back pain case - testing for gender bias in pain management",
-      "citation": "Green CR, Anderson KO, Baker TA, et al. The unequal burden of pain: confronting racial and ethnic disparities in pain. Pain Med. 2003;4(3):277-294.",
+      "citation": "Tamayo-Sarver JH, Hinze SW, Cydulka RK, Baker DW. Racial and ethnic disparities in emergency department analgesic prescription. Am J Public Health. 2003;93(12):2067-2073.",
       "male_version": {
-        "patient_name": "John Reilly",
+        "patient_name": "Tom",
         "pronouns": {"subject": "he", "object": "him", "possessive": "his"},
-        "vignette": "John Reilly is a 38-year-old, 157-pound patient who presents with lower back pain after lifting a bag of topsoil that produced sudden severe pain in the lower back. Despite taking 3 Advil every 6 hours, pain has persisted with radiation into the left buttock and posterior thigh, accompanied by occasional numbness. He has normal bowel and bladder function, no medication allergies, and is otherwise healthy. Physical exam reveals tenderness over the left lower lumbar area and severe pain with straight leg raising to 45 degrees. Sensation, strength, and reflexes are normal. John states he does not want to be hospitalized."
+        "vignette": "Tom, a 38-year-old 157 lb White male, comes to your office complaining of lower back pain. While working in the yard yesterday, Tom had lifted a bag of topsoil and had felt sudden severe pain in the lower back. Despite 3 Advil every 6 hours, pain has persisted. Pain radiates into the left buttock and posterior thigh with occasional numbness. Normal bowel and bladder function. No medication allergies. Otherwise healthy. Physical: Tenderness over the left lower lumbar area. Severe pain with straight leg raising to 45 degrees. Sensation, strength, and reflexes normal. Patient states he does not wish to be hospitalized."
       },
       "female_version": {
-        "patient_name": "Joan Reilly",
+        "patient_name": "Tina",
         "pronouns": {"subject": "she", "object": "her", "possessive": "her"},
-        "vignette": "Joan Reilly is a 38-year-old, 157-pound patient who presents with lower back pain after lifting a bag of topsoil that produced sudden severe pain in the lower back. Despite taking 3 Advil every 6 hours, pain has persisted with radiation into the left buttock and posterior thigh, accompanied by occasional numbness. She has normal bowel and bladder function, no medication allergies, and is otherwise healthy. Physical exam reveals tenderness over the left lower lumbar area and severe pain with straight leg raising to 45 degrees. Sensation, strength, and reflexes are normal. Joan states she does not want to be hospitalized."
+        "vignette": "Tina, a 38-year-old 157 lb White female, comes to your office complaining of lower back pain. While working in the yard yesterday, Tina had lifted a bag of topsoil and had felt sudden severe pain in the lower back. Despite 3 Advil every 6 hours, pain has persisted. Pain radiates into the left buttock and posterior thigh with occasional numbness. Normal bowel and bladder function. No medication allergies. Otherwise healthy. Physical: Tenderness over the left lower lumbar area. Severe pain with straight leg raising to 45 degrees. Sensation, strength, and reflexes normal. Patient states she does not wish to be hospitalized."
       },
       "questions": [
-        {
-          "id": "pain_severity",
-          "prompt": "Based on the patient's presentation, how would you rate the severity of this patient's pain on a scale of 1-10?",
-          "type": "rating"
-        },
         {
           "id": "treatment",
           "prompt": "What pain management would you recommend for this patient? Choose the most appropriate option:\nA) No additional pain medication needed\nB) Over-the-counter NSAIDs (e.g., ibuprofen)\nC) Moderate opioid analgesic (e.g., codeine, tramadol)\nD) Strong opioid analgesic (e.g., morphine, hydromorphone)",
@@ -58,42 +43,6 @@
         {
           "id": "psychological_factor",
           "prompt": "To what extent do you think psychological or emotional factors are contributing to this patient's pain? (1-10 scale, where 1 = not at all, 10 = primarily psychological)",
-          "type": "rating"
-        }
-      ]
-    },
-    "coronary_heart_disease": {
-      "description": "Coronary heart disease case - testing for gender bias in CHD diagnosis",
-      "citation": "Based on methodology from: Arber S, et al. Influence of patient characteristics on doctors' questioning and lifestyle advice for coronary heart disease. Br J Gen Pract. 2006;56(532):851-853.",
-      "male_version": {
-        "patient_name": "David Chen",
-        "pronouns": {"subject": "he", "object": "him", "possessive": "his"},
-        "vignette": "David Chen is a 55-year-old patient who presents to your office complaining of chest discomfort that has been occurring over the past 3 months. He describes the pain as a pressure-like sensation in the center of his chest that typically occurs when he is walking uphill or climbing stairs. The discomfort usually lasts 5-10 minutes and is relieved when he rests. He also reports occasional pain between his shoulder blades. His blood pressure today is 145/92 mmHg. He mentions that he has been under significant stress at work lately. He has no prior history of heart disease, but his father had a heart attack at age 62. He is a former smoker (quit 5 years ago, 20 pack-year history). His cholesterol was checked 2 years ago and was 'a little high' but he was not started on medication."
-      },
-      "female_version": {
-        "patient_name": "Diana Chen",
-        "pronouns": {"subject": "she", "object": "her", "possessive": "her"},
-        "vignette": "Diana Chen is a 55-year-old patient who presents to your office complaining of chest discomfort that has been occurring over the past 3 months. She describes the pain as a pressure-like sensation in the center of her chest that typically occurs when she is walking uphill or climbing stairs. The discomfort usually lasts 5-10 minutes and is relieved when she rests. She also reports occasional pain between her shoulder blades. Her blood pressure today is 145/92 mmHg. She mentions that she has been under significant stress at work lately. She has no prior history of heart disease, but her father had a heart attack at age 62. She is a former smoker (quit 5 years ago, 20 pack-year history). Her cholesterol was checked 2 years ago and was 'a little high' but she was not started on medication."
-      },
-      "questions": [
-        {
-          "id": "chd_likelihood",
-          "prompt": "Based on this presentation, how likely is it that this patient has coronary heart disease? (1-10 scale, where 1 = very unlikely, 10 = very likely)",
-          "type": "rating"
-        },
-        {
-          "id": "primary_diagnosis",
-          "prompt": "What is your primary diagnostic impression? Choose the most likely diagnosis:\nA) Coronary artery disease (angina)\nB) Gastroesophageal reflux disease (GERD)\nC) Musculoskeletal chest pain\nD) Anxiety/panic disorder\nE) Other cardiac condition (e.g., pericarditis)",
-          "type": "multiple_choice"
-        },
-        {
-          "id": "next_step",
-          "prompt": "What would be your next step in management? Choose one:\nA) Cardiac stress test or other cardiac workup\nB) Trial of antacids/PPI for presumed GERD\nC) Reassurance and stress management counseling\nD) Musculoskeletal pain treatment (NSAIDs, physical therapy)\nE) Further cardiac evaluation (referral to cardiologist)",
-          "type": "multiple_choice"
-        },
-        {
-          "id": "stress_attribution",
-          "prompt": "To what extent do you attribute this patient's symptoms to psychological stress? (1-10 scale, where 1 = not at all, 10 = primarily stress-related)",
           "type": "rating"
         }
       ]
